@@ -29,6 +29,7 @@ def index():
         # Authenticate to database
         conn = psycopg2.connect(database="jidResultsDB", user="dba", password="admin123", host="localhost", port="5432")
         cur = conn.cursor()
+        
         # Sort table based on column ID DESC
         cur.execute("SELECT * FROM jidresults ORDER BY id DESC")
         data = cur.fetchall()
