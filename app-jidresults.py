@@ -27,7 +27,6 @@ def root():
 def index():  
     try:
         conn = psycopg2.connect(database="jidResultsDB", user="dba", password="admin123", host="localhost", port="5432")
-        # create a cursor
         cur = conn.cursor()
         # Sort table based on column ID DESC
         cur.execute("SELECT * FROM jidresults ORDER BY id DESC")
