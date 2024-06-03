@@ -126,7 +126,7 @@ def updaterecord():
             conn.close()
             print("PostgreSQL connection is closed")
 
-# Heroku requirement
+# Heroku port requirement
 port = int(os.environ.get("PORT", 5000))
 
 if __name__ == '__main__':
