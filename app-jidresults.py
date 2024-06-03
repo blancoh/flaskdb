@@ -20,7 +20,6 @@ cur = conn.cursor()
 # if you already have any table or not id does not matter this
 # will create a products table for you.
 cur.execute(
-    #'''CREATE TABLE IF NOT EXISTS jidresults (id serial PRIMARY KEY, createdate varchar(50), spid INT NOT NULL CHECK (spid >= 0), fqdn varchar(50), qid INT NOT NULL CHECK (qid >= 0) UNIQUE, jid INT NOT NULL CHECK (jid >= 0) UNIQUE, jidstatus varchar(50));''')
     '''CREATE TABLE IF NOT EXISTS jidresults (id serial PRIMARY KEY, createdate TIMESTAMPTZ, spid INT NOT NULL CHECK (spid >= 0), fqdn varchar(50), qid INT NOT NULL CHECK (qid >= 0) UNIQUE, jid INT NOT NULL CHECK (jid >= 0) UNIQUE, jidstatus varchar(50));''')
 
 cur.execute(
