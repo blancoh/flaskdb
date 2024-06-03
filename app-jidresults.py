@@ -104,8 +104,7 @@ def updaterecord():
         sql_update_query = "UPDATE jidresults SET jidstatus = %s WHERE id = %s"
         cur.execute(sql_update_query, (status, id))
         conn.commit()
-        count = cur.rowcount
-        print(count, "Record Updated successfully ")
+        print("Record Updated successfully ")
 
         # Select record based on id
         print("Select record after update ")
