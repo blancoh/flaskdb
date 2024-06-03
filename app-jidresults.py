@@ -14,6 +14,10 @@ cur.execute(
        jid INT NOT NULL CHECK (jid >= 0) UNIQUE, jidstatus varchar(50));''')
 cur.execute(
     '''ALTER TABLE jidresults ALTER createdate set default now();''')
+# Insert some data into the table
+cur.execute(
+    '''INSERT INTO jidresults (spid, fqdn, qid, jid, jidstatus) VALUES ('1', 'server1.itw2.uspto.gov', '1234', '220', 'SUCCESS'), 
+                                                                       ('2', 'server-2.itw2.uspto.gov', '1235', '221', 'FAILURE');''')
 conn.commit()
 cur.close()
 conn.close()
