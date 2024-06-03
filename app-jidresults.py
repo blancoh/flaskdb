@@ -6,7 +6,7 @@ import views
 app = Flask(__name__,static_url_path='',static_folder='static',template_folder='templates')
 
 # Create jidresults table
-conn = psycopg2.connect(database="jidResultsDB", user="dba", password="admin123", host="localhost", port="5432")
+conn = psycopg2.connect(database="jidresultsdb", user="dba", password="admin123", host="localhost", port="5432")
 cur = conn.cursor()
 cur.execute(
     '''CREATE TABLE IF NOT EXISTS jidresults (id serial PRIMARY KEY, createdate TIMESTAMPTZ, 
@@ -27,7 +27,7 @@ def root():
 def index():  
     try:
         # Authenticate to database
-        conn = psycopg2.connect(database="jidResultsDB", user="dba", password="admin123", host="localhost", port="5432")
+        conn = psycopg2.connect(database="jidresultsdb", user="dba", password="admin123", host="localhost", port="5432")
         cur = conn.cursor()
         
         # Sort table based on column ID DESC
@@ -51,7 +51,7 @@ def index():
 def createrecord():
     try:
         # Authenticate to database
-        conn = psycopg2.connect(database="jidResultsDB", user="dba", password="admin123", host="localhost", port="5432")
+        conn = psycopg2.connect(database="jidresultsdb", user="dba", password="admin123", host="localhost", port="5432")
         cur = conn.cursor()
 
         # Gather parameters from API request
@@ -92,7 +92,7 @@ def createrecord():
 def updaterecord():
     try:
         # Authenticate to database
-        conn = psycopg2.connect(database="jidResultsDB", user="dba", password="admin123", host="localhost", port="5432")
+        conn = psycopg2.connect(database="jidresultsdb", user="dba", password="admin123", host="localhost", port="5432")
         cur = conn.cursor()
         
         # Gather parameters from API request
