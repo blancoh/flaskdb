@@ -53,7 +53,6 @@ def index():
         # Sort table based on column ID DESC
         cur.execute("SELECT * FROM jidresults ORDER BY id DESC")
         data = cur.fetchall()
-        #return render_template("test.html", data=data)
         return render_template("basic_table.html", data=data)
     except (Exception, psycopg2.Error) as error:
         print("Error in update operation", error)
