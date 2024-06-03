@@ -65,8 +65,7 @@ def createrecord():
         sql_insert_query = "INSERT INTO jidresults(spid, fqdn, qid, jid, jidstatus) VALUES (%s, %s, %s, %s, %s)"
         cur.execute(sql_insert_query, (spid, fqdn, qid, jid, jidstatus))
         conn.commit()
-        count = cur.rowcount
-        print(count, "Record Updated successfully ")
+        print("Record Updated successfully ")
 
         # Select record based on qid which is always unique
         print("Select record after creation ")
