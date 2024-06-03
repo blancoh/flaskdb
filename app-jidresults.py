@@ -54,15 +54,18 @@ def index():
         cur.execute("SELECT * FROM jidresults ORDER BY id DESC")
         data = cur.fetchall()
         return render_template("basic_table.html", data=data)
+      
     except (Exception, psycopg2.Error) as error:
         print("Error in update operation", error)
+      
     finally:
         # closing database connection.
-        if conn:
+        if cur:
             cur.close()
+            print("PostgreSQL cursor is closed")
+        if conn:
             conn.close()
             print("PostgreSQL connection is closed")
-        return render_template("basic_table.html", data=data)
 
 @app.route('/createrecord', methods=['POST'])
 def createrecord():
@@ -99,13 +102,15 @@ def createrecord():
         
     except (Exception, psycopg2.Error) as error:
         print("Error in update operation", error)
+      
     finally:
         # closing database connection.
-        if conn:
+        if cur:
             cur.close()
+            print("PostgreSQL cursor is closed")
+        if conn:
             conn.close()
             print("PostgreSQL connection is closed")
-        return jsonify(record), 200
 
 @app.route('/updatejidstatus', methods=['POST'])
 def updatejidstatus():
