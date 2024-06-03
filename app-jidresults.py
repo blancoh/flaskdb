@@ -53,6 +53,7 @@ def createrecord():
         conn = psycopg2.connect(database="jidResultsDB", user="dba", password="admin123", host="localhost", port="5432")
         cur = conn.cursor()
 
+        # Gather parameters from API request
         args = request.args
         spid = args.get('spid')
         fqdn = args.get('fqdn')
@@ -93,7 +94,8 @@ def updaterecord():
         # Authenticate to database
         conn = psycopg2.connect(database="jidResultsDB", user="dba", password="admin123", host="localhost", port="5432")
         cur = conn.cursor()
-
+        
+        # Gather parameters from API request
         args = request.args
         id = args.get('id')
         status = args.get('jidstatus')
