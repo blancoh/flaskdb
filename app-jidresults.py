@@ -26,6 +26,7 @@ def root():
 @app.route("/index", methods=['GET'])
 def index():  
     try:
+        # Authenticate to database
         conn = psycopg2.connect(database="jidResultsDB", user="dba", password="admin123", host="localhost", port="5432")
         cur = conn.cursor()
         # Sort table based on column ID DESC
@@ -48,6 +49,7 @@ def index():
 @app.route('/createrecord', methods=['POST'])
 def createrecord():
     try:
+        # Authenticate to database
         conn = psycopg2.connect(database="jidResultsDB", user="dba", password="admin123", host="localhost", port="5432")
         cur = conn.cursor()
 
@@ -88,6 +90,7 @@ def createrecord():
 @app.route('/updaterecord', methods=['POST'])
 def updaterecord():
     try:
+        # Authenticate to database
         conn = psycopg2.connect(database="jidResultsDB", user="dba", password="admin123", host="localhost", port="5432")
         cur = conn.cursor()
 
