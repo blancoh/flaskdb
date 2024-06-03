@@ -50,7 +50,7 @@ def index():
 
         # create a cursor
         cur = conn.cursor()
-
+        # Sort table based on column ID DESC
         cur.execute("SELECT * FROM jidresults ORDER BY id DESC")
         data = cur.fetchall()
         #return render_template("test.html", data=data)
