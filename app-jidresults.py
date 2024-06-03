@@ -117,7 +117,7 @@ def updatejidstatus():
         print(count, "Record Updated successfully ")
 
         print("Select record after update ")
-        sql_select_query = """SELECT * FROM jidresults WHERE id = %s"""
+        sql_select_query = "SELECT * FROM jidresults WHERE id = %s"
         cur.execute(sql_select_query, (id,))
         record = cur.fetchone()
         print(record)
