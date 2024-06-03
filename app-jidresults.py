@@ -107,11 +107,12 @@ def updaterecord():
 
         args = request.args
         id = args.get('id')
-        jidstatus = args.get('jidstatus')
+        status = args.get('jidstatus')
+        colname = args.get('colname')
 
         # Update jidstatus
         sql_update_query = "UPDATE jidresults SET jidstatus = %s WHERE id = %s"
-        cur.execute(sql_update_query, (jidstatus, id))
+        cur.execute(sql_update_query, (status, id))
         conn.commit()
         count = cur.rowcount
         print(count, "Record Updated successfully ")
