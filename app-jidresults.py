@@ -5,35 +5,18 @@ import views
 
 app = Flask(__name__,static_url_path='',static_folder='static',template_folder='templates')
 
-# Test Postgresql connection
-conn = psycopg2.connect(database="jidResultsDB",
-                            user="dba",
-                            password="admin123",
-                            host="localhost", port="5432")
-
-
-# create a cursor
+# Create jidresults table
+conn = psycopg2.connect(database="jidResultsDB", user="dba", password="admin123", host="localhost", port="5432")
 cur = conn.cursor()
-
-# if you already have any table or not id does not matter this
-# will create a jidresults table for you.
 cur.execute(
     '''CREATE TABLE IF NOT EXISTS jidresults (id serial PRIMARY KEY, createdate TIMESTAMPTZ, spid INT NOT NULL CHECK (spid >= 0), fqdn varchar(50), qid INT NOT NULL CHECK (qid >= 0) UNIQUE, jid INT NOT NULL CHECK (jid >= 0) UNIQUE, jidstatus varchar(50));''')
-
 cur.execute(
     '''ALTER TABLE jidresults ALTER createdate set default now();''')
-
-# Insert some data into the table
-#cur.execute(
-#    '''INSERT INTO jidresults (spid, fqdn, qid, jid, jidstatus) VALUES ('1', 'server1.itw2.uspto.gov', '1234', '220', 'SUCCESS'), ('2', 'server-2.itw2.uspto.gov', '1235', '221', 'FAILURE');''')
-
-# commit the changes
 conn.commit()
-
-# close the cursor and connection
 cur.close()
 conn.close()
 
+# Define api routes
 @app.route('/')
 def root():
     return redirect("/index")
