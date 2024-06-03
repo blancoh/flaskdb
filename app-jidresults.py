@@ -23,7 +23,7 @@ conn.close()
 def root():
     return redirect("/index")
 
-@app.route("/index", methods=['POST', 'GET'])
+@app.route("/index", methods=['GET'])
 def index():  
     try:
         conn = psycopg2.connect(database="jidResultsDB",
