@@ -1,5 +1,3 @@
-#!/Users/hblanco/PycharmProjects/jidResults/bin/python3
-
 from flask import Flask, jsonify, render_template, request, redirect, url_for
 import psycopg2
 import os
