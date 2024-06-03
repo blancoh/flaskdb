@@ -137,9 +137,7 @@ def updaterecord():
             print("PostgreSQL connection is closed")
 
 
-# ADJUSTMENT: This is needed for Heroku configuration as in Heroku our
-# app will probably not run on port 5000 as Heroku will automatically
-# assign a port for our application.
+# Used for Heroku
 port = int(os.environ.get("PORT", 5000))
 
 if __name__ == '__main__':
