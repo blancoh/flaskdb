@@ -106,6 +106,7 @@ def updaterecord():
         count = cur.rowcount
         print(count, "Record Updated successfully ")
 
+        # Select record based on id
         print("Select record after update ")
         sql_select_query = "SELECT * FROM jidresults WHERE id = %s"
         cur.execute(sql_select_query, (id,))
