@@ -9,7 +9,9 @@ app = Flask(__name__,static_url_path='',static_folder='static',template_folder='
 conn = psycopg2.connect(database="jidResultsDB", user="dba", password="admin123", host="localhost", port="5432")
 cur = conn.cursor()
 cur.execute(
-    '''CREATE TABLE IF NOT EXISTS jidresults (id serial PRIMARY KEY, createdate TIMESTAMPTZ, spid INT NOT NULL CHECK (spid >= 0), fqdn varchar(50), qid INT NOT NULL CHECK (qid >= 0) UNIQUE, jid INT NOT NULL CHECK (jid >= 0) UNIQUE, jidstatus varchar(50));''')
+    '''CREATE TABLE IF NOT EXISTS jidresults (id serial PRIMARY KEY, createdate TIMESTAMPTZ, 
+       spid INT NOT NULL CHECK (spid >= 0), fqdn varchar(50), qid INT NOT NULL CHECK (qid >= 0) UNIQUE, 
+       jid INT NOT NULL CHECK (jid >= 0) UNIQUE, jidstatus varchar(50));''')
 cur.execute(
     '''ALTER TABLE jidresults ALTER createdate set default now();''')
 conn.commit()
