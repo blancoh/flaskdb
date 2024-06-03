@@ -5,7 +5,7 @@ import psycopg2
 import os
 import views
 
-app = Flask(__name__,static_url_path='',static_folder='jidResults/static',template_folder='jidResults/templates')
+app = Flask(__name__,static_url_path='',static_folder='static',template_folder='templates')
 
 # Test Postgresql connection
 conn = psycopg2.connect(database="jidResultsDB",
