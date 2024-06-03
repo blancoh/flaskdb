@@ -95,8 +95,8 @@ def createrecord():
             conn.close()
             print("PostgreSQL connection is closed")
 
-@app.route('/updatejidstatus', methods=['POST'])
-def updatejidstatus():
+@app.route('/updaterecord', methods=['POST'])
+def updaterecord():
     try:
         conn = psycopg2.connect(database="jidResultsDB",
                             user="dba",
