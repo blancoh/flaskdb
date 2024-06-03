@@ -92,7 +92,7 @@ def createrecord():
         print(count, "Record Updated successfully ")
 
         print("Select record after creation ")
-        sql_select_query = """SELECT * FROM jidresults WHERE qid = %s"""
+        sql_select_query = "SELECT * FROM jidresults WHERE qid = %s"
         cur.execute(sql_select_query, (qid,))
         record = cur.fetchone()
         print(record)
