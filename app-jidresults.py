@@ -146,21 +146,15 @@ def deleterecord():
         sql_update_query = "DELETE FROM jidresultsdb WHERE id = %s"
         cur.execute(sql_update_query, (status, id))
         conn.commit()
-        record = "Record Deleted successfully "
+        print("Record Deleted successfully ")
+        
+        # Select all records
+        print("Select record after update ")
+        sql_select_query = "SELECT * FROM jidresults"
+        cur.execute(sql_select_query, (id,))
+        record = cur.fetchall()
         print(record)
         return jsonify(record), 200
-
-    except (Exception, psycopg2.Error) as error:
-        print("Error in update operation", error)
-
-    finally:
-        # closing database connection.
-        if cur:
-            cur.close()
-            print("PostgreSQL cursor is closed")
-        if conn:
-            conn.close()
-            print("PostgreSQL connection is closed")
 
 # Heroku port requirement
 port = int(os.environ.get("PORT", 5000))
