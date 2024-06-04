@@ -51,7 +51,7 @@ def index():
             conn.close()
             print("PostgreSQL connection is closed")
 
-@app.route('/createrecord', methods=['POST'])
+@app.route('/createrecord', methods=['GET', 'POST'])
 def createrecord():
     try:
         # Authenticate to database
@@ -92,7 +92,7 @@ def createrecord():
             conn.close()
             print("PostgreSQL connection is closed")
 
-@app.route('/updaterecord', methods=['POST'])
+@app.route('/updaterecord', methods=['GET', 'POST'])
 def updaterecord():
     try:
         # Authenticate to database
