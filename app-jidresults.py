@@ -131,6 +131,37 @@ def updaterecord():
             conn.close()
             print("PostgreSQL connection is closed")
 
+@app.route('/deleterecord', methods=['GET', 'POST'])
+def deleterecord():
+    try:
+        # Authenticate to database
+        conn = psycopg2.connect(database="jidresultsdb", user="dba", password="admin123", host="localhost", port="5432")
+        cur = conn.cursor()
+        
+        # Gather parameters from API request
+        args = request.args
+        id = args.get('id')
+
+        # Update jidstatus
+        sql_update_query = "DELETE FROM jidresultsdb WHERE id = %s"
+        cur.execute(sql_update_query, (status, id))
+        conn.commit()
+        record = "Record Deleted successfully "
+        print(record)
+        return jsonify(record), 200
+
+    except (Exception, psycopg2.Error) as error:
+        print("Error in update operation", error)
+
+    finally:
+        # closing database connection.
+        if cur:
+            cur.close()
+            print("PostgreSQL cursor is closed")
+        if conn:
+            conn.close()
+            print("PostgreSQL connection is closed")
+
 # Heroku port requirement
 port = int(os.environ.get("PORT", 5000))
 
